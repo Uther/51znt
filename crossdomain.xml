@@ -1,0 +1,3 @@
+<cross-domain-policy>
+	<allow-access-from domain="*.51znt.com"/>
+</cross-domain-policy>

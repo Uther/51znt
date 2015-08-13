@@ -1,0 +1,85 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+
+
+RewriteCond %{QUERY_STRING} ^do=article&view=article_info&art_cat_id=(\d+)&art_id=(\d+)
+RewriteRule ^index.php$ /news/view-%2.html? [L,R=301]
+RewriteCond %{QUERY_STRING} ^do=article&page_size=5&page=(\d+)
+RewriteRule ^index.php$ /news/p%1.html? [L,R=301]
+RewriteCond %{QUERY_STRING} ^do=help&fpid=(\d+)&spid=(\d+)
+RewriteRule ^index.php$ /help/view-%2.html? [L,R=301]
+RewriteCond %{QUERY_STRING} ^do=release&r_step=step2&h_uid=(\d+)
+RewriteRule ^index.php$ /pub/step2-pub-%1? [L,R=301]
+RewriteCond %{QUERY_STRING} ^do=release&h_uid=(\d+)
+RewriteRule ^index.php$ /pub/step2-pub-%1? [L,R=301]
+RewriteCond %{QUERY_STRING} ^do=space&member_id=(\d+)
+RewriteRule ^index.php$ /headhunter/%1? [L,R=301]
+RewriteCond %{QUERY_STRING} ^do=headhunter_list&gindus_id=(\d+)&area_id=(\d+)
+RewriteRule ^index.php$ /headhunter/list-%1-%2.html? [L,R=301]
+RewriteCond %{QUERY_STRING} ^do=headhunter_list&area_id=(\d+)&gindus_id=(\d+)
+RewriteRule ^index.php$ /headhunter/list-%2-%1.html? [L,R=301]
+RewriteCond %{QUERY_STRING} ^do=headhunter_list&gindus_id=(\d+)
+RewriteRule ^index.php$ /headhunter/list-%1-.html? [L,R=301]
+RewriteCond %{QUERY_STRING} ^do=headhunter_list&area_id=(\d+)
+RewriteRule ^index.php$ /headhunter/list--%1.html? [L,R=301]
+
+RewriteCond %{QUERY_STRING} ^zone=(\d+)
+RewriteRule ^headhunter/list.html$ /headhunter/list.html?prov=%1 [L,R=301]
+
+RewriteRule ^release.html /pub/step1 [L,R=301]
+RewriteRule ^shop_release.html /headhunter/step1 [L,R=301]
+
+RewriteRule ^article.html /news [L,R=301]
+RewriteRule ^article-view-article_info-art_cat_id-(\d+)-art_id-(\d+).html /news/view-$2.html [L,R=301]
+RewriteRule ^article-view-article_info-art_id-(\d+).html /news/view-$1.html [L,R=301]
+RewriteRule ^article-view-article_list-year-(\d+).html /news [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-5-page_size-5-page-(\d+).html /news/hangye-p$1.html [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-5.html /news/hangye [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-17-page_size-5-page-(\d+).html /news/gonggao-p$1.html [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-17.html /news/gonggao [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-449-page_size-5-page-(\d+).html /news/lietou-p$1.html [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-449.html /news/lietou [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-409-page_size-5-page-(\d+).html /news/dongtai-p$1.html [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-409.html /news/dongtai [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-410-page_size-5-page-(\d+).html /news/baodao-p$1.html [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-410.html /news/baodao [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-431-page_size-5-page-(\d+).html /news/huodong-p$1.html [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-431.html /news/huodong [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-426-page_size-5-page-(\d+).html /news/zhichang-p$1.html [L,R=301]
+RewriteRule ^article-view-article_list-art_cat_id-426.html /news/zhichang [L,R=301]
+
+RewriteRule ^single-art_id-299.html /aboutus [L,R=301]
+RewriteRule ^single-art_id-300.html /contact [L,R=301]
+RewriteRule ^help-fpid-100-spid-(\d+).html /help/view-$1.html [L,R=301]
+RewriteRule ^help-fpid-100.html /help [L,R=301]
+
+
+RewriteRule ^post_list.html /job [L,R=301]
+RewriteRule ^post_list-trade-(\d+)-zone-(\d+)-nianxin-(\d+).html /job/list-$1-$2-$3.html [L,R=301]
+RewriteRule ^post_list-trade-(\d+).html /job/list-$1--.html [L,R=301]
+RewriteRule ^post_list-zone-(\d+).html /job/list--$1-.html [L,R=301]
+RewriteRule ^post_list-nianxin-(\d+).html /job/list---$1.html [L,R=301]
+RewriteRule ^post_info-post_id-(\d+).html /job/$1 [L,R=301]
+
+RewriteRule ^service_list.html /headhunter/service [L,R=301]
+RewriteRule ^headhunter_list.html /headhunter [L,R=301]
+RewriteRule ^headhunter_list-page-(\d+).html /headhunter/list-p$1.html [L,R=301]
+RewriteRule ^headhunter_list-gindus_id-(\d+).html /headhunter/list.html?trade=$1 [L,R=301]
+RewriteRule ^headhunter_list-area_id-(\d+).html /headhunter/list.html?zone=$1 [L,R=301]
+RewriteRule ^headhunter_list-area_id-(\d+)-gindus_id-(\d+)-page-(\d+).html /headhunter/list-$2-$1-p$3.html [L,R=301]
+RewriteRule ^headhunter_list-area_id-(\d+)-gindus_id-(\d+).html /headhunter/list-$2-$1.html [L,R=301]
+RewriteRule ^space-member_id-(\d+).html /headhunter/$1 [L,R=301]
+
+#RewriteCond %{HTTP_HOST} ^(www.)?51znt.com$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#RewriteRule ^(.*)$ /index.php?/$1 [QSA,PT,L]
+RewriteRule . index.php
+
+#RewriteCond %{HTTP_HOST} ^it.51znt.com$
+#RewriteRule ^/(.*)$ http://www.51znt.com/$1 [L,R=301]
+#RewriteRule ^/$ http://www.51znt.com [L,R=301]
+</IfModule>
+
